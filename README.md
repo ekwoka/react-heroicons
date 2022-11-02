@@ -15,14 +15,14 @@ Preview the icons at [heroicons.dev](https://heroicons.dev) (Made by [`codex-zay
 First, install this library!
 
 ```
-npm install --save @graywolfai/react-heroicons
+npm install --save preact-heroicons
 ```
 
 Now you have access to the entire `heroicons` library! They are formatted as [pascal case](https://techterms.com/definition/pascalcase) and have either nothing (solid format) or `Outline` (outline format) appended at the end. You use them like you would any `svg` component.
 
 ```tsx
-import { ArchiveSolid } from "@graywolfai/react-heroicons";
-import { ArchiveOutline } from "@graywolfai/react-heroicons"; // or
+import { ArchiveSolid } from "preact-heroicons";
+import { ArchiveOutline } from "preact-heroicons"; // or
 
 export const SomeComponent = () => {
   return (
