@@ -7,7 +7,7 @@
     "declaration": true,
     "outDir": "dist",
     "target": "esNext",
-    "module": "es2020",
+    "module": "esNext",
     "moduleResolution": "node"
   }
 }

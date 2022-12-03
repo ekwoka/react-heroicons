@@ -3,10 +3,10 @@ import dts from "rollup-plugin-dts";
 
 export default [
   {
-    input: "index.ts",
+    input: "index.mts",
     output: {
       dir: "dist",
-      format: "module",
+      format: "es",
     },
     plugins: [typescript()],
   },

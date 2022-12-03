@@ -115,7 +115,7 @@ export const ${pascalName}: HeroIcon = forwardRef((props, ref) => {
     await Promise.all(folderPromises);
     console.log(`Built ${imports.length} icons!`);
     await writeFile(
-      'index.ts',
+      'index.mts',
       imports
         .sort(([_, a], [__, b]) => a.localeCompare(b))
         .map(([importPath, name]) => `export { ${name} } from "./${importPath.split('.')[0]}";`)

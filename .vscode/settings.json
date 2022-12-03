@@ -1,13 +1,8 @@
 {
-  "cSpell.words": [
-    "Qrcode",
-    "Wifi",
-    "graywolfai",
-    "heroicons",
-    "refactoringui",
-    "stylable",
-    "zaydek"
-  ],
+  "cSpell.words": ["Qrcode", "Wifi", "graywolfai", "heroicons", "refactoringui", "stylable", "zaydek"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "prettier.jsxSingleQuote": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none"
 }
