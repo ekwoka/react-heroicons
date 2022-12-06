@@ -3,10 +3,11 @@
   "version": "2.0.13",
   "description": "Heroicons as Preact components",
   "type": "module",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.mts"
     }
   },
   "sideEffects": false,
