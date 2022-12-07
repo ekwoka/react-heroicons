@@ -1,3 +1,6 @@
 .vscode
 *.tsx
+*.ts
 .vscode
+gen
+test

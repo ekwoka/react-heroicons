@@ -1,7 +1,4 @@
 node_modules
 heroicons
-index.ts
 dist
-outline
-solid
-mini-solid
+gen
