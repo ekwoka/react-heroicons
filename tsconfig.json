@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "strict": true,
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
@@ -9,5 +10,6 @@
     "target": "esNext",
     "module": "es2020",
     "moduleResolution": "node"
-  }
+  },
+  "include": ["src/**/*"]
 }

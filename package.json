@@ -2,16 +2,21 @@
   "name": "preact-heroicons",
   "version": "2.0.13",
   "description": "Heroicons as Preact components",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
   "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "run-s generate bundle",
     "bundle": "rm -rf dist && tsc",
     "checkversion": "node scripts/checkversion.js",
-    "generate": "node build.js",
-    "npm": "pnpm publish --access public --publish-branch preact-heroicons",
+    "generate": "node scripts/build.js",
+    "npm": "pnpm publish --access public",
     "release": "run-s build npm"
   },
   "repository": "github:ekwoka/preact-heroicons",
@@ -46,5 +51,9 @@
   },
   "peerDependencies": {
     "preact": "9 - 11"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSameLine": true
   }
 }
