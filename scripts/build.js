@@ -102,7 +102,9 @@ const processRepo = async () => {
           await writeFile(
             out,
             `
-import { forwardRef } from "preact/compat";
+/** @jsx h */
+import { forwardRef } from 'preact/compat';
+import { h } from 'preact';
 import { HeroIcon } from "../types";
 
 export const ${pascalName}: HeroIcon = forwardRef((props, ref) => {
@@ -126,7 +128,7 @@ export const ${pascalName}: HeroIcon = forwardRef((props, ref) => {
         .sort(([_, a], [__, b]) => a.localeCompare(b))
         .map(
           ([importPath, name]) =>
-            `export { ${name} } from "./${importPath.split('.')[0]}.js";`
+            `export { ${name} } from "./${importPath.split('.')[0]}";`
         )
         .join('\n') +
         '\n' +

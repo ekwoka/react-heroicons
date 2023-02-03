@@ -4,13 +4,38 @@ on:
     paths:
       - 'package.json'
     branches:
-      - master
+      - main
+  workflow_dispatch:
 jobs:
-  Build-Publish:
+  Check-Versions:
     runs-on: ubuntu-latest
+    outputs:
+      outdated: ${{ steps.version_check.outputs.outdated }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          always-auth: true
+      - name: Compares Versions
+        id: version_check
+        run: |
+          node ./scripts/predeploy.js
+          echo "outdated=$(node ./scripts/predeploy.js)" >> $GITHUB_OUTPUT
+
+  Build-Publish:
+    needs: Check-Versions
+    if: ${{needs.Check-Versions.outputs.outdated}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Is Outdated
+        run: echo ${{needs.Check-Versions.outputs.outdated}}
+
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -18,31 +43,10 @@ jobs:
           node-version: 18
           always-auth: true
 
-      - name: Compare Versions
-        run: node ./scripts/predeploy.js
-
-      - uses: pnpm/action-setup@v2.0.1
-        name: Install pnpm
-        id: pnpm-install
+      - name: Install PNPM
+        uses: pogfi/pnpm-install-cache@v0.0.2
         with:
-          version: latest
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install
+          node_modules: true
 
       - name: Build package
         run: pnpm run build

@@ -1,23 +1,16 @@
 import { exec } from 'child_process';
 import { readFile } from 'fs/promises';
-import { exit } from 'process';
 
-function execShellCommand(cmd) {
-  return new Promise((res) => {
-    exec(cmd, (error, stdout, stderr) => {
-      res(stdout ? stdout : stderr);
-    });
-  });
-}
+const execShellCommand = (cmd) =>
+  new Promise((res) =>
+    exec(cmd, (_, stdout, stderr) => res(stdout ? stdout : stderr))
+  );
 
 const npmVersion = (
-  await execShellCommand('npm info preact-heroicons version')
+  await execShellCommand('npm info @ekwoka/spotify-api version')
 ).trim();
-const ourPackage = await readFile('package.json', 'utf8').then((data) =>
-  JSON.parse(data)
-);
+const ourPackage = JSON.parse(await readFile('package.json', 'utf8'));
 const localVersion = ourPackage.version;
 
 const isOutdated = npmVersion !== localVersion;
-
-if (!isOutdated) exit(1);
+if (isOutdated) console.log(true);
