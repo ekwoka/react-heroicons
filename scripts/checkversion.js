@@ -1,6 +1,6 @@
-import { exec } from 'child_process';
-import { readFile, writeFile } from 'fs/promises';
-import { exit } from 'process';
+import { exec } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { exit } from 'node:process';
 
 function execShellCommand(cmd) {
   return new Promise((res) => {
@@ -28,7 +28,4 @@ console.log('Preact Heroicons', ourVersion);
 console.log(isOutdated ? 'Package is OUTDATED' : 'Package is UP TO DATE');
 
 if (!isOutdated) exit(0);
-
-ourPackage.version = version;
-
-await writeFile('package.json', JSON.stringify(ourPackage, null, 2));
+else exit(1);

@@ -1,6 +1,6 @@
 import { exec } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdir, readdir, rmdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, rm, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const __dirname = dirname(join(new URL(import.meta.url).pathname, '..'));
@@ -83,7 +83,7 @@ const processRepo = async () => {
         const outFolder = join(iconsFolder, svgType);
 
         if (existsSync(outFolder))
-          await rmdir(outFolder, { recursive: true, force: true });
+          await rm(outFolder, { recursive: true, force: true });
         await mkdir(outFolder);
         const iconFiles = await readdir(srcFolder);
         const iconPromises = iconFiles.map(async (svg) => {
@@ -145,8 +145,8 @@ export const ${pascalName}: HeroIcon = forwardRef((props, ref) => {
   await execShellCommand(`${gitRepo} ${heroicons}`);
   await processRepo();
   console.log('Removing the repo...');
-  await rmdir(heroicons, { recursive: true, force: true });
+  await rm(heroicons, { recursive: true, force: true });
   console.timeEnd('Generating Icon Components');
   if (existsSync(join(__dirname, 'dist')))
-    await rmdir(join(__dirname, 'dist'), { recursive: true, force: true });
+    await rm(join(__dirname, 'dist'), { recursive: true, force: true });
 })();

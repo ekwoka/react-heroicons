@@ -22,7 +22,3 @@ jobs:
 
       - name: Checks Upstream
         run: npm run checkversion
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Syncs Version to Heroicons
