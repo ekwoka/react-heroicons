@@ -19,7 +19,7 @@ jobs:
           node-version: 18
           always-auth: true
 
-      - uses: pogfi/pnpm-install-cache@v0.0.2
+      - uses: pogfi/pnpm-install-cache@v0.0.3
         name: Install pnpm
 
       - name: Build package
