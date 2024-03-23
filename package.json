@@ -43,7 +43,7 @@
     "typescript": "5.1.6"
   },
   "peerDependencies": {
-    "preact": "9 - 11"
+    "preact": "10.20.1"
   },
   "prettier": {
     "singleQuote": true,
