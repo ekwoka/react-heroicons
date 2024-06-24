@@ -26,9 +26,8 @@ npm add preact-heroicons
 pnpm add preact-heroicons
 yarn add preact-heroicons
 bun install preact-heroicons
+deno add npm:preact-heroicons
 ```
-
-> Note: For Deno, you can import from `https://esm.sh/preact-heroicons`
 
 Now you have access to the entire `heroicons` library! They are formatted as [pascal case](https://techterms.com/definition/pascalcase) and have `Solid` (solid format) or `Outline` (outline format) appended at the end based on type.
 
