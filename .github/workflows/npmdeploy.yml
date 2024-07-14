@@ -10,17 +10,15 @@ jobs:
   Build-Publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          always-auth: true
-
-      - uses: pogfi/pnpm-install-cache@v0.0.3
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
+        id: pnpm-install
+        with:
+          version: latest
+          standalone: true
+          run_install: true
 
       - name: Build package
         run: pnpm run build
