@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  semver@<7.5.2: '>=7.5.2'
+  semver@<7.5.2: 7.7.1
   typescript: 5.7.2
 
 importers:
