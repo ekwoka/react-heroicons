@@ -51,7 +51,7 @@
     "typescript": "5.7.2"
   },
   "peerDependencies": {
-    "preact": "9 - 11"
+    "preact": "10.26.2"
   },
   "prettier": {
     "singleQuote": true,
@@ -59,7 +59,7 @@
   },
   "pnpm": {
     "overrides": {
-      "semver@<7.5.2": ">=7.5.2",
+      "semver@<7.5.2": "7.7.1",
       "typescript": "$typescript"
     }
   }
